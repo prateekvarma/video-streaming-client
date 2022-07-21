@@ -7,25 +7,40 @@ class GoogleAuth extends React.Component {
     window.gapi.load("client:auth2", () => {
       window.gapi.client
         .init({
-          clientId:
-            "XXX",
+          clientId: "XXX",
           scope: "email",
           plugin_name: "Msg for making plugin_name work as gapi is deprecated",
         })
         .then(() => {
-          this.auth = window.gapi.auth2.getAuthInstance();
+          this.auth = window.gapi.auth2.getAuthInstance(); //windows is needed because we're importing gapi from the header tag as a script.
           this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+          this.auth.isSignedIn.listen(this.onAuthChange); //'listen' can be seen from the console.log, it's a property inside the '__proto__'. The 'onAuthChange' function will be called each time that the user's authentication status changes.
         });
     });
   }
 
+  onAuthChange = () => {
+    //we can update the state here, since the user's auth status has changed
+    this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+  };
+
   renderAuthButton() {
     if (this.state.isSignedIn === null) {
-      return <div>Not sure if signed in!</div>;
+      return null;
     } else if (this.state.isSignedIn) {
-      return <div>I am signed in!</div>;
+      return (
+        <button className="ui red google button">
+          <i className="google icon" />
+          Sign Out
+        </button>
+      );
     } else {
-      return <div>I am not signed in :(</div>;
+      return (
+        <button className="ui red google button">
+          <i className="google icon" />
+          Sign in with Google
+        </button>
+      );
     }
   }
 
