@@ -10,6 +10,7 @@ class GoogleAuth extends React.Component {
           clientId:
             "XXX",
           scope: "email",
+          plugin_name: "Msg for making plugin_name work as gapi is deprecated",
         })
         .then(() => {
           this.auth = window.gapi.auth2.getAuthInstance();
