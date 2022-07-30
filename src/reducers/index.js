@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
+import authReducer from "./authReducer";
 
 export default combineReducers({
-  replaceMe: () => "Reducer Test Text", //sending dummy reducer just to make Redux work temporarily
+  auth: authReducer,
 });
