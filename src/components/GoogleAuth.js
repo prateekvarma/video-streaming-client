@@ -42,7 +42,6 @@ class GoogleAuth extends React.Component {
 
   renderAuthButton() {
     //using 'this.props' instead of 'this.state' because now we're referencing Redux rather than states.
-    console.log("Current State:", this.props.isSignedIn);
     if (this.props.isSignedIn === null) {
       return null;
     } else if (this.props.isSignedIn === true) {
