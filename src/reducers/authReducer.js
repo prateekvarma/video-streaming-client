@@ -1,7 +1,7 @@
 import { SIGN_IN, SIGN_OUT } from "../actions/types";
 
 const INITIAL_STATE = {
-  IsSignedIn: null,
+  isSignedIn: null,
   userId: null, //just a good practise to initialize. This is received from the "onAuthChange" function
 };
 
