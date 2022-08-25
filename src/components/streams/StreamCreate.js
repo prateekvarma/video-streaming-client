@@ -13,9 +13,17 @@ class StreamCreate extends React.Component {
     );
   }
 
+  //Below, the formValues props will have values from the <Field /> below as a part of Redux forms
+  onSubmit(formValues) {
+    console.log("Form field values: ", formValues);
+  }
+
   render() {
     return (
-      <form className="ui form">
+      <form
+        onSubmit={this.props.handleSubmit(this.onSubmit)}
+        className="ui form"
+      >
         <Field name="title" component={this.renderInput} label="Enter Title" />
         {/*The "label" prop will be passed into the "renderInput" function as a prop */}
         <Field
@@ -23,6 +31,7 @@ class StreamCreate extends React.Component {
           component={this.renderInput}
           label="Enter Description"
         />
+        <button className="ui button primary">Submit</button>
       </form>
     );
   }
