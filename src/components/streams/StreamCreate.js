@@ -9,6 +9,7 @@ class StreamCreate extends React.Component {
         <label>{formProps.label}</label>
         <input {...formProps.input} />
         {/* the ""...formProps.input" essentially is a short form to do this : onChange={formProps.input.onChange} value={formProps.input.value} */}
+        <div>{formProps.meta.error}</div>
       </div>
     );
   }
@@ -53,4 +54,5 @@ const validate = (formValues) => {
 
 export default reduxForm({
   form: "streamCreate",
+  validate: validate
 })(StreamCreate);
