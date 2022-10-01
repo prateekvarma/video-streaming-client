@@ -14,8 +14,9 @@ class StreamCreate extends React.Component {
 
   renderInput = (formProps) => {
     //if you do a console.log(formProps) - you'll see some functions i.e onChange, value
+    const className = `field ${formProps.meta && formProps.meta.touched ? 'error' : ''}`
     return (
-      <div className="field">
+      <div className={className}>
         <label>{formProps.label}</label>
         <input {...formProps.input} />
         {/* the ""...formProps.input" essentially is a short form to do this : onChange={formProps.input.onChange} value={formProps.input.value} */}
@@ -33,7 +34,7 @@ class StreamCreate extends React.Component {
     return (
       <form
         onSubmit={this.props.handleSubmit(this.onSubmit)}
-        className="ui form"
+        className="ui form error"
       >
         <Field name="title" component={this.renderInput} label="Enter Title" />
         {/*The "label" prop will be passed into the "renderInput" function as a prop */}
